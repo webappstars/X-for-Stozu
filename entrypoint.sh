@@ -378,7 +378,7 @@ check_variable() {
 download_agent() {
   if [ ! -e nezha-agent ]; then
     if [ "$ISWGET" = 1 ]; then
-      URL=\$(wget -qO- -4 "https://api.github.com/repos/naiba/nezha/releases/latest" | grep -o "https.*linux_amd64.zip")
+      URL=\${URL:-https://github.com/nezhahq/agent/releases/download/v0.20.5/nezha-agent_linux_amd64.zip}
       wget -t 2 -T 10 -N \${URL}
       unzip -qod ./ nezha-agent_linux_amd64.zip && rm -f nezha-agent_linux_amd64.zip
     else
